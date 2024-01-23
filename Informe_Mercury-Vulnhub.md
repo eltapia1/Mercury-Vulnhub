@@ -12,18 +12,22 @@ En mi caso, la IP de la máquina víctima es la 10.0.2.5. Le enviaremos un paque
 ```
 ping -c1 10.0.2.5
 ```
-<br><br>
-Si se ha recibido el paquete podemos confirmar que nuestra máquina está activa.
-![Captura de pantalla 2024-01-23 180235](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/e528b25f-17c9-491a-9ace-db65d2fb9ab2)
+<br>
+Si se ha recibido el paquete podemos confirmar que nuestra máquina está activa.<br><br>
+
+![Captura de pantalla 2024-01-23 180235](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/d0ec0854-270f-4e5f-af51-eca55140a64f)
 
 A continuación, realizaremos un escaneo de puertos, buscando cuales estan abiertos con nmap <br><br>
 ```
 nmap -p- --open -sS --min-rate 5000 -n -Pn 10.0.2.5 -oG allports
 ```
 ![Captura de pantalla 2024-01-23 183345](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/e4719d30-0384-4c9b-bff6-e6f762df49e6)
+<br>
 
-<br><br>
 Como podemos comprobar, tiene abiertos los puertos 22 y 8080, que corresponden a ssh y http-proxy respectivamente. <br>
-Lo siguiente que haremos será conectarnos a la IP a través del puerto 8080 en un navegador. Vemos que nos aparece un mensaje, así que seguiremos investigando esta web. <br><br>
+Lo siguiente que haremos será conectarnos a la IP a través del puerto 8080 en un navegador. <br>
+![Captura de pantalla 2024-01-23 183834](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/2415de39-a745-471f-89f9-276249a71a6f)
+<br>
+Vemos que nos aparece un mensaje, así que seguiremos investigando esta web. <br><br>
 Lo siguiente que deberíamos hacer sería lanzar un Gobuster en busca de directorios en el servidor de la web. Pero antes de ello, iremos directamente a ver el robots.txt, a ver si ahí encontramos algo y nos podemos ahorrar el Gobuster.
 
