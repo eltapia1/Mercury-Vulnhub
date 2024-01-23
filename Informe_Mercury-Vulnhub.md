@@ -18,5 +18,5 @@ nmap -p- --open -sS --min-rate 5000 -n -Pn 10.0.2.5 -oG allports
 ```
 <br><br>
 Como podemos comprobar, tiene abiertos los puertos 22 y 8080, que corresponden a ssh y http-proxy respectivamente. <br>
-Lo siguiente que haremos será conectarnos a la IP a través del puerto 8080 en un navegador. Vemos que nos aparece un mensaje. Seguiremos investigando esta web. Lo siguiente que deberíamos hacer sería lanzar un Gobuster en busca de directorios en el servidor de la web. Pero antes de ello, iremos directamente a ver el robots.txt, a ver si ahí encontramos algo y nos podemos ahorrar el Gobuster.
+Lo siguiente que haremos será conectarnos a la IP a través del puerto 8080 en un navegador. Vemos que nos aparece un mensaje, así que eguiremos investigando esta web. Lo siguiente que deberíamos hacer sería lanzar un Gobuster en busca de directorios en el servidor de la web. Pero antes de ello, iremos directamente a ver el robots.txt, a ver si ahí encontramos algo y nos podemos ahorrar el Gobuster.
 
