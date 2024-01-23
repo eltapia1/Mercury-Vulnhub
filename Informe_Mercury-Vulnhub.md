@@ -25,9 +25,10 @@ nmap -p- --open -sS --min-rate 5000 -n -Pn 10.0.2.5 -oG allports
 <br>
 
 Como podemos comprobar, tiene abiertos los puertos 22 y 8080, que corresponden a ssh y http-proxy respectivamente. <br>
-Lo siguiente que haremos será conectarnos a la IP a través del puerto 8080 en un navegador. <br>
+Lo siguiente que haremos será conectarnos a la IP a través del puerto 8080 en un navegador. <br><br>
 ![Captura de pantalla 2024-01-23 183834](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/2415de39-a745-471f-89f9-276249a71a6f)
-<br>
+<br><br>
 Vemos que nos aparece un mensaje, así que seguiremos investigando esta web. <br><br>
-Lo siguiente que deberíamos hacer sería lanzar un Gobuster en busca de directorios en el servidor de la web. Pero antes de ello, iremos directamente a ver el robots.txt, a ver si ahí encontramos algo y nos podemos ahorrar el Gobuster.
+Lo siguiente que deberíamos hacer sería lanzar un Gobuster en busca de directorios en el servidor de la web. Pero antes de ello, iremos directamente a ver el robots.txt, a ver si ahí encontramos algo y nos podemos ahorrar el Gobuster. <br><br>
+![Captura de pantalla 2024-01-23 185208](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/ad4a1645-07c3-460c-92e1-3267378ba98e)
 
