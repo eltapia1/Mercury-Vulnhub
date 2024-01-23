@@ -31,4 +31,7 @@ Lo siguiente que haremos será conectarnos a la IP a través del puerto 8080 en 
 Vemos que nos aparece un mensaje, así que seguiremos investigando esta web. <br><br>
 Lo siguiente que deberíamos hacer sería lanzar un Gobuster en busca de directorios en el servidor de la web. Pero antes de ello, iremos directamente a ver el robots.txt, a ver si ahí encontramos algo y nos podemos ahorrar el Gobuster. <br><br>
 ![Captura de pantalla 2024-01-23 185208](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/ad4a1645-07c3-460c-92e1-3267378ba98e)
+<br>
+Probaremos de usar el asterisco como directorio: <br>
+
 
