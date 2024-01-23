@@ -1,2 +1,2 @@
 # Informe vm Mercury-Vulnhub
-## A
+### Pasos para resolver la vm Mercury de Vulnhub 
