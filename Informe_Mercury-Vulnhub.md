@@ -1,5 +1,6 @@
 # Informe vm Mercury-Vulnhub
-## Pasos a seguir para resolver la vm Mercury de Vulnhub 
+A continuación, el walkthrough de la máquina virtual Mercury, del grupo Planets de Vulnhub, explicado paso a paso.
+## Fase de reconocimiento 
 
 Primero de todo, escaneamos la red local en busca de direcciones IP. Para ello usaremos el comando arp-scan sobre la interfaz de red en la que estemos trabajando: <br><br>
 ```
@@ -25,6 +26,7 @@ nmap -p- --open -sS --min-rate 5000 -n -Pn 10.0.2.5 -oG allports
 <br>
 
 Como podemos comprobar, tiene abiertos los puertos 22 y 8080, que corresponden a ssh y http-proxy respectivamente. <br>
+## Conexion e investigación de la máquina
 Lo siguiente que haremos será conectarnos a la IP a través del puerto 8080 en un navegador. <br><br>
 
 ![Captura de pantalla 2024-01-23 183834](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/2415de39-a745-471f-89f9-276249a71a6f)
