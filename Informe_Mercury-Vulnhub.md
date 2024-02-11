@@ -46,6 +46,10 @@ Probaremos de usar el asterisco como directorio: <br><br>
 
 De lo que vemos en la web, lo más interesante son los 3 puntos que aparecen. Y si nos fijamos en el punto 3, tiene pinta de ser un directorio. Probaremos a ver. <br><br>
 ![Captura de pantalla 2024-01-24 093452](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/5390e909-9cb6-4d86-bc4e-cdaba241cc26)
+<br><br>
+
+
+
 
 
 
