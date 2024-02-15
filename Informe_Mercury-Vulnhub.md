@@ -10,6 +10,7 @@ arp-scan -I eth3 --localnet --ignoredups
 
 <br>
 En mi caso, la IP de la máquina víctima es la 10.0.2.5. Le enviaremos un paquete para comprobar que está activa: <br><br>
+
 ```
 ping -c1 10.0.2.5
 ```
