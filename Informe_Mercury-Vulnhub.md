@@ -68,7 +68,9 @@ sqlmap -u http.//10.0.2.5:8080/mercuryfacts/ -D mercury --dump-all --batch
 ![Imagen4](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/a2bc1efa-acff-4bfa-b168-e24555a23e5b)
 <br><br>
 
-Y hemos obtenido una lista de usuarios con sus respectivas contraseñas. Sabiendo que el puerto 22, correspondiente a ssh, está abierto, vamos a intentar explotar esta vulnerabilidad. Tras empezar a probar con cada usuario y contraseña, hemos tenido éxito con el usuario webmaster. <br><br>
+Y hemos obtenido una lista de usuarios con sus respectivas contraseñas. Sabiendo que el puerto 22, correspondiente a ssh, está abierto, vamos a intentar explotar esta vulnerabilidad. <br><br>
+## Acceso a la máquina
+Tras empezar a probar con cada usuario y contraseña, hemos tenido éxito con el usuario webmaster. <br><br>
 ```
 ssh webmaster@10.0.2.5
 ```
@@ -86,7 +88,7 @@ A continuación, como hemos accedido como webmaster, listaremos los archivos y d
 ![Imagen7](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/fcc207a5-4251-46bc-af88-830e929f3952)
 <br><br>
 
-Y hemos encontrado una flag. A continuación, seguiremos indagando en esta máquina en busca de más cosas. <br><br>
+Y hemos encontrado una flag. A continuación, seguiremos indagando en esta máquina en busca de más cosas. <br>
 Veamos los derechos y privilegios del usuario con el que hemos accedido. <br><br>
 
 ![Imagen8](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/f328f7c3-e689-4e3b-b638-74004a3d080c)
@@ -129,7 +131,10 @@ Comprobamos qué derechos y privilegios tiene este usuario: <br><br>
 ![Imagen14](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/178edaf7-e645-4ee0-8c14-fa0be345860a)
 <br><br>
 
-Parece ser que tiene privilegios de root sobre /usr/bin/check_syslog.sh. Realizaremos a continuación una escalada de privilegios para obtener acceso como root. <br><br>
+Parece ser que tiene privilegios de root sobre /usr/bin/check_syslog.sh. <br><br>
+## Escalada de privilegios
+
+Realizaremos a continuación una escalada de privilegios para obtener acceso como root. <br><br>
 ```
 cat /usr/bin/check_syslog.sh
 ```
