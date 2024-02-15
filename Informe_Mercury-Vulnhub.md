@@ -8,7 +8,7 @@ arp-scan -I eth3 --localnet --ignoredups
 ```
 ![Captura de pantalla 2024-01-23 180113](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/7410790a-b735-47ee-a640-2f05364c6852)
 
-<br><br>
+<br>
 En mi caso, la IP de la máquina víctima es la 10.0.2.5. Le enviaremos un paquete para comprobar que está activa: <br><br>
 ```
 ping -c1 10.0.2.5
