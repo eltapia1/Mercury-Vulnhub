@@ -80,11 +80,56 @@ A continuación, como hemos accedido como webmaster, listaremos los archivos y d
 ![Imagen7](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/fcc207a5-4251-46bc-af88-830e929f3952)
 <br><br>
 
-Y hemos encontrado una flag. A continuación, seguiremos indagando en esta máquina en busca de más cosas. <br>
-Veamos los derechos y privilegios del usuario con el que hemos accedido. 
+Y hemos encontrado una flag. A continuación, seguiremos indagando en esta máquina en busca de más cosas. <br><br>
+Veamos los derechos y privilegios del usuario con el que hemos accedido. <br><br>
 
+![Imagen8](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/f328f7c3-e689-4e3b-b638-74004a3d080c)
+<br><br>
 
+Al parecer, el usuario con el que hemos accedido no tiene privilegios de root. Después de comprobar esto, veamos el directorio que aparecía además de la flag que hemos encontrado: <br><br>
 
+![Imagen9](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/9a38498e-ec54-4b02-bb44-492a12568a0b)
+<br><br>
+
+Veamos qué contiene el archivo notes.txt. <br><br>
+
+![Imagen10](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/6c6e1cb2-4c8c-4a3e-bec8-6b1e1d268379)
+<br><br>
+Parece que son 2 cadenas de caracteres codificados, seguramente en base 64. Vamos a intentar traducirlos. <br><br> 
+
+![Imagen11](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/64bc5d5e-3a73-46fb-bedf-c8d108845b54)
+<br><br>
+
+Tras decodificarla podemos comprobar que era la contraseña para el usuario webmaster. Lo que nos indica que probablemente la otra sea la contraseña del linuxmaster. Decodifiquémosla entonces: <br><br>
+
+![Imagen12](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/9d2d07cd-649c-4f1a-8b16-b11cdb578b49)
+<br><br>
+
+Efectivamente, obtenemos la contraseña de linuxmaster. A continuación, entraremos con estas credenciales. <br><br>
+
+![Imagen13](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/640c4874-100a-4e88-9bc9-ea340c384aec)
+<br><br>
+
+Comprobamos qué derechos y privilegios tiene este usuario: <br><br>
+
+![Imagen14](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/178edaf7-e645-4ee0-8c14-fa0be345860a)
+<br><br>
+
+Parece ser que tiene privilegios de root sobre /usr/bin/check_syslog.sh. Realizaremos a continuación una escalada de privilegios para obtener acceso como root. <br><br>
+
+![Imagen15](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/d097a58d-c8f4-47a4-b94b-2d34d11f1741)
+<br><br>
+A continuación escribiríamos lo siguiente: <br>
+```
+:!/bin/bash
+```
+<br>
+Y ya tendríamos acceso como root y podríamos encontrar la segunda y útlima flag de esta máquina: <br><br>
+
+![Imagen16](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/0dafd5bd-445a-4c56-924d-c3eb5eb658cd) 
+<br>
+
+![Imagen17](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/14a1c3d7-f12a-402c-aeb7-b37a99bcc444)
 
 
 
