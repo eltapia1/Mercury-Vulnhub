@@ -63,7 +63,7 @@ El comando nos buscará posibles vulnerabilidades sql en el servidor de la web y
 Estas son las bases de datos encontradas en el servidor: information_schema y mercury. <br>
 Una vez encontradas las bases de datos, explotaremos la que nos interesa, en nuestro caso, la mercury. A continuación, seguiremos usando sqlmap pero esta vez para extraer información de la base de datos mercury: <br><br>
 ```
-sqlmap -u http.//10.0.2.5:8080/mercuryfacts/ -D mercury --dump-all --batch
+sqlmap -u http://10.0.2.5:8080/mercuryfacts/ -D mercury --dump-all --batch
 ```
 ![Imagen4](https://github.com/eltapia1/Mercury-Vulnhub/assets/150331416/a2bc1efa-acff-4bfa-b168-e24555a23e5b)
 <br><br>
